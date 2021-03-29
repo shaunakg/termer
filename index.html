@@ -99,6 +99,9 @@
 
 	<script type="text/javascript">
 
+		const enjoy = ' Enjoy your holidays! &#127881;';
+		const year = moment().format("Y");
+
 		let sp = new URLSearchParams(location.search);
 
 		if (sp.get("imgurl") || sp.get("img")) {
@@ -113,37 +116,37 @@
 
 			{
 				desc: "until Term 1 ends.",
-				time: moment("2021-04-01 14:30:00")
+				time: moment(year + "-04-01 14:30:00")
 			},
 
 			{
-				desc: "until Term 2 starts.",
-				time: moment("2021-04-19 08:00:00")
+				desc: "until Term 2 starts." + enjoy,
+				time: moment(year + "-04-19 08:00:00")
 			},
 
 			{
 				desc: "until Term 2 ends.",
-				time: moment("2021-06-25 14:30:00")
+				time: moment(year + "-06-25 14:30:00")
 			},
 
 			{
-				desc: "until Term 3 starts.",
-				time: moment("2021-07-12 08:00:00")
+				desc: "until Term 3 starts." + enjoy,
+				time: moment(year + "-07-12 08:00:00")
 			},
 
 			{
 				desc: "until Term 3 ends.",
-				time: moment("2021-09-17 14:30:00")
+				time: moment(year + "-09-17 14:30:00")
 			},
 
 			{
-				desc: "until Term 4 starts.",
-				time: moment("2021-10-04 08:00:00")
+				desc: "until Term 4 starts." + enjoy,
+				time: moment(year + "-10-04 08:00:00")
 			},
 
 			{
 				desc: "until Term 4/2021 school year ends.",
-				time: moment("2021-12-17 14:30:00")
+				time: moment(year + "-12-17 14:30:00")
 			}
 
 		]
