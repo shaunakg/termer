@@ -1,0 +1,155 @@
+<!doctype html>
+
+<head>
+
+	<title>VIC Term countdown</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-duration-format/1.3.0/moment-duration-format.min.js"></script>
+
+	<style>
+
+
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			width: 100vw;
+			height: 100vh;
+
+			margin: 0; padding: 0;
+
+			font-family: -apple-system, sans-serif;
+		}
+
+		h2#time{
+			font-size: 3rem;
+			margin: 10px 0;
+		}
+
+		subtitle {
+			font-size: 1.5rem;
+		}
+
+		.container {
+			margin: 20px;
+			padding: 50px;
+
+			/*border: 5px solid white;*/
+			background-color: rgba(0, 0, 0, 0.9);
+			color: white;
+			border-radius: 5px;
+		}
+
+		@media (max-width: 400px) {
+			h2#time {
+				font-size: 2rem;
+			}
+
+			.container {
+				padding: 20px;
+			}
+		}
+
+		div#noImg p {
+			font-size: 0.7rem;
+		}
+
+
+	</style>
+
+</head>
+
+
+<body>
+
+
+	<div class="container">
+
+		<h2 id="time"></h2>
+		<subtitle id="desc"></subtitle>
+
+		<div id="noImg">	
+			<p>Want a custom background image? Add <code>?imgurl=[your image url]</code> or <code>?img=[your image search term]</code> to the URL.</p>
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+
+		let sp = new URLSearchParams(location.search);
+
+		if (sp.get("imgurl") || sp.get("img")) {
+			
+			document.getElementById("noImg").style.display = "none";
+
+		}
+
+		document.body.style.backgroundImage = sp.get("imgurl") ? `url("${sp.get('imgurl')}")` : `url("https://source.unsplash.com/${window.innerWidth}x${window.innerHeight}/?${sp.get("img") || ""}")`
+
+		dates = [
+
+			{
+				desc: "until Term 1 ends.",
+				time: moment("2021-04-01 14:30:00")
+			},
+
+			{
+				desc: "until Term 2 starts.",
+				time: moment("2021-04-19 08:00:00")
+			},
+
+			{
+				desc: "until Term 2 ends.",
+				time: moment("2021-06-25 14:30:00")
+			},
+
+			{
+				desc: "until Term 3 starts.",
+				time: moment("2021-07-12 08:00:00")
+			},
+
+			{
+				desc: "until Term 3 ends.",
+				time: moment("2021-09-17 14:30:00")
+			},
+
+			{
+				desc: "until Term 4 starts.",
+				time: moment("2021-10-04 08:00:00")
+			},
+
+			{
+				desc: "until Term 4/2021 school year ends.",
+				time: moment("2021-12-17 14:30:00")
+			}
+
+		]
+
+		for (let date of dates) {
+
+			if (date.time.isBefore(moment())) {
+				break;
+			} else {
+
+				setInterval(() => {
+
+					let duration = moment.duration(date.time.diff(moment(), 'milliseconds'), 'milliseconds').format("d [days], h [hours], m [minutes], s [seconds]")
+
+					document.getElementById("time").innerText = duration;
+					document.getElementById("desc").innerText = date.desc;
+					document.title = duration + " " + date.desc + " | VIC Term Countdown"
+
+				}, 1000);
+
+				break;
+
+			}
+
+		}
+
+	</script>
+
+</body>
