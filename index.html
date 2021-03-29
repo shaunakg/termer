@@ -163,7 +163,7 @@
 
 					document.getElementById("time").innerHTML =  `${duration.split(",")[0]},<span class="empty">${duration.split(",").slice(1).join(',')}</span>` ;
 					document.getElementById("desc").innerText = date.desc;
-					document.title = duration + " " + date.desc + " | VIC Term Countdown"		
+					document.title = duration + ` (on ${date.time.format("YYYY-MM-DD")}) ` + date.desc + " | VIC Term Countdown"		
 
 				}, 1000);
 
